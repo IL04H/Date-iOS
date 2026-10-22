@@ -35,6 +35,22 @@ jobs:
           zip -qry Date-iOS-Widgets.ipa Payload
           unzip -l Date-iOS-Widgets.ipa | grep -E "Date-iOS.app/PlugIns/DateWidget.appex|Date-iOS.app/Info.plist"
 
+      - name: Create app-only diagnostic IPA
+        run: |
+          rm -rf Payload-AppOnly Date-iOS-AppOnly.ipa
+          mkdir -p Payload-AppOnly
+          cp -R build/Build/Products/Release-iphoneos/Date-iOS.app Payload-AppOnly/Date-iOS.app
+          rm -rf Payload-AppOnly/Date-iOS.app/PlugIns
+          zip -qry Date-iOS-AppOnly.ipa Payload-AppOnly
+          unzip -l Date-iOS-AppOnly.ipa | grep -E "Date-iOS.app/Info.plist"
+
+      - name: Upload app-only diagnostic IPA
+        uses: actions/upload-artifact@v4
+        with:
+          name: Date-iOS-AppOnly-IPA
+          path: Date-iOS-AppOnly.ipa
+          if-no-files-found: error
+
       - name: Upload widget IPA
         uses: actions/upload-artifact@v4
         with:
