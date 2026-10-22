@@ -22,11 +22,29 @@ targets:
         CODE_SIGNING_REQUIRED: NO
         CODE_SIGN_IDENTITY: ""
 
+  DateWidget:
+    type: app-extension
+    platform: iOS
+    sources:
+      - Date-iOS/DateWidget.swift
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.test.dateios.widget
+        SWIFT_VERSION: "5.0"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: Date
+        INFOPLIST_KEY_NSExtension_NSExtensionPointIdentifier: com.apple.widgetkit-extension
+        CODE_SIGNING_ALLOWED: NO
+        CODE_SIGNING_REQUIRED: NO
+        CODE_SIGN_IDENTITY: ""
+
 schemes:
   Date-iOS:
     build:
       targets:
         Date-iOS: all
+        DateWidget: all
     run:
       config: Debug
     archive:
