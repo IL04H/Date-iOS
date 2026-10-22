@@ -1,0 +1,33 @@
+name: Date-iOS
+
+options:
+  bundleIdPrefix: com.test
+  deploymentTarget:
+    iOS: "17.0"
+
+targets:
+  Date-iOS:
+    type: application
+    platform: iOS
+    sources:
+      - Date-iOS
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.test.dateios
+        SWIFT_VERSION: "5.0"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: Date
+        CODE_SIGNING_ALLOWED: NO
+        CODE_SIGNING_REQUIRED: NO
+        CODE_SIGN_IDENTITY: ""
+
+schemes:
+  Date-iOS:
+    build:
+      targets:
+        Date-iOS: all
+    run:
+      config: Debug
+    archive:
+      config: Release
