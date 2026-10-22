@@ -12,6 +12,9 @@ targets:
     sources:
       - Date-iOS/ContentView.swift
       - Date-iOS/Date_iOSApp.swift
+    dependencies:
+      - target: DateWidget
+        embed: true
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.test.dateios
