@@ -37,12 +37,12 @@ jobs:
 
       - name: Create app-only diagnostic IPA
         run: |
-          rm -rf Payload-AppOnly Date-iOS-AppOnly.ipa
-          mkdir -p Payload-AppOnly
-          cp -R build/Build/Products/Release-iphoneos/Date-iOS.app Payload-AppOnly/Date-iOS.app
-          rm -rf Payload-AppOnly/Date-iOS.app/PlugIns
-          zip -qry Date-iOS-AppOnly.ipa Payload-AppOnly
-          unzip -l Date-iOS-AppOnly.ipa | grep -E "Date-iOS.app/Info.plist"
+          rm -rf Payload Date-iOS-AppOnly.ipa
+          mkdir -p Payload
+          cp -R build/Build/Products/Release-iphoneos/Date-iOS.app Payload/Date-iOS.app
+          rm -rf Payload/Date-iOS.app/PlugIns
+          zip -qry Date-iOS-AppOnly.ipa Payload
+          unzip -l Date-iOS-AppOnly.ipa | grep -E "Payload/Date-iOS.app/Info.plist"
 
       - name: Upload app-only diagnostic IPA
         uses: actions/upload-artifact@v4
