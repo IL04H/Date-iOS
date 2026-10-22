@@ -10,7 +10,8 @@ targets:
     type: application
     platform: iOS
     sources:
-      - Date-iOS
+      - Date-iOS/ContentView.swift
+      - Date-iOS/Date_iOSApp.swift
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.test.dateios
